@@ -20,41 +20,33 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-
-//* install docker
-* checkout the code
-* run init.sh script
-
-Create a folder 'StatementValidator'
-
- 
-Open Git Bash. 
+- Open Git Bash. 
 [image] 
 
-Go to the folder where you want to checkout the code.
+- Go to the folder where you want to checkout the code.
 ```
 cd git/
 ```
 
-Clone the code from git into the folder
+- Clone the code from git into the folder
 ```
 git clone https://p-bitbucket.nl.eu.abnamro.com:7999/scm/pis/statementvalidator.git
 ```
 
-Go into the folder 'statementvalidator'
+- Go into the folder 'statementvalidator'
 ```
 cd statementvalidator
 ```
 
-Start the application on local using maven
+- Start the application on local using maven
 ```
 mvn spring-boot:run
 ```
 
-Call the api using curl
+- Call the API using curl
 ```
 curl -X POST http://localhost:9080/customer/validate -F "file=@{path_to_file}/records.csv"
 ```
 
-Call the api using postman
+- Call the API using Postman
 [image]
