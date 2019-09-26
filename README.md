@@ -20,32 +20,41 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
+
+//* install docker
 * checkout the code
-* build using maven
-* run the application
+* run init.sh script
 
-A step by step series of examples that tell you how to get a development env running
+Create a folder 'StatementValidator'
 
-checkout the code on machine
-```
-git checkout 
-```
+ 
+Open Git Bash. 
+[image] 
 
-build the code using maven
+Go to the folder where you want to checkout the code.
 ```
-mvn clean install
+cd git/
 ```
 
-start the application 
+Clone the code from git into the folder
 ```
-java -jar validatorApplication.jar
-```
-
-call the api using curl
-```
-curl
+git clone https://p-bitbucket.nl.eu.abnamro.com:7999/scm/pis/statementvalidator.git
 ```
 
-call the api using postman
+Go into the folder 'statementvalidator'
+```
+cd statementvalidator
+```
+
+Start the application on local using maven
+```
+mvn spring-boot:run
+```
+
+Call the api using curl
+```
+curl -X POST http://localhost:9080/customer/validate -F "file=@{path_to_file}/records.csv"
+```
+
+Call the api using postman
 [image]
-
