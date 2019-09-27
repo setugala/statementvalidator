@@ -8,45 +8,46 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Technologies
 
-* Springboot 2.1.8
+* Spring Boot 2.1.8.RELEASE
 * Java 8
 
 ### Prerequisites
 
 * JDK 1.8 or higher
-* git bash
-* maven
-* curl / postman
+* [git bash](https://git-scm.com/downloads)
+* [maven](https://maven.apache.org/download.cgi)
+* [curl](https://curl.haxx.se/dlwiz/?type=bin)
 
 ### Installing
 
-- Open Git Bash. 
-[image] 
-
-- Go to the folder where you want to checkout the code.
+##### 1) Open Git Bash. Go to the folder where you want to checkout the code.
 ```
 cd git/
 ```
 
-- Clone the code from git into the folder
+##### 2) Clone the code from git into the folder
 ```
-git clone https://p-bitbucket.nl.eu.abnamro.com:7999/scm/pis/statementvalidator.git
+git clone https://github.com/setugala/statementvalidator.git
 ```
 
-- Go into the folder 'statementvalidator'
+##### 3) Go into the folder 'statementvalidator'
 ```
 cd statementvalidator
 ```
 
-- Start the application on local using maven
+##### 4a) Start the application on local using maven
 ```
 mvn spring-boot:run
 ```
 
-- Call the API using curl
+#### 4b) Start the application on local using docker
 ```
-curl -X POST http://localhost:9080/customer/validate -F "file=@{path_to_file}/records.csv"
+docker image build -t customer/statementvalidator .
+docker run -it customer/statementvalidator -p 9080:9080
 ```
 
-- Call the API using Postman
-[image]
+##### 5) Call the API using curl
+```
+curl -X POST http://localhost:9080/customer/validate -F "file=@{path_to_file}/records.csv"
+curl -X POST http://localhost:9080/customer/validate -F "file=@{path_to_file}/records.xml"
+```

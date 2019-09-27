@@ -17,7 +17,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.customer.statementvalidator.errorhandler.CustomerValidatorApplicationException;
+import com.customer.statementvalidator.errorhandler.ValidatorApplicationException;
 import com.customer.statementvalidator.errorhandler.ExceptionFactory;
 import com.customer.statementvalidator.resources.Record;
 import com.customer.statementvalidator.resources.Records;
@@ -46,10 +46,10 @@ public class CSVFileValidator {
    *                in xml format
    * @return Records
    *            - the records present in the csv file
-   * @throws CustomerValidatorApplicationException
+   * @throws ValidatorApplicationException
    *            - Application exception in case of IO Exception
    */
-  public Records getRecordsFromCSV(MultipartFile uploadedFile) throws CustomerValidatorApplicationException {
+  public Records getRecordsFromCSV(MultipartFile uploadedFile) throws ValidatorApplicationException {
     List<Record> recordList = null;
     try(InputStream is = uploadedFile.getInputStream();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));){

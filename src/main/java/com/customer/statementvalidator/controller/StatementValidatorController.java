@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.customer.statementvalidator.errorhandler.CustomerValidatorApplicationException;
+import com.customer.statementvalidator.errorhandler.ValidatorApplicationException;
 import com.customer.statementvalidator.errorhandler.ExceptionFactory;
 import com.customer.statementvalidator.resources.Records;
 import com.customer.statementvalidator.resources.Response;
@@ -78,7 +78,7 @@ public class StatementValidatorController {
       
       response.setDuplicateTransactionReference(validator.checkDuplicateReference(records));
       response.setInvalidEndBalance(validator.checkInvalidEndBalance(records));
-    }catch(CustomerValidatorApplicationException exception) {
+    }catch(ValidatorApplicationException exception) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessages());
     }catch(Exception exception) {
       LOGGER.error("Exception while validating csv file", exception);

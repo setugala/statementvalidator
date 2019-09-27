@@ -15,7 +15,8 @@ import com.customer.statementvalidator.resources.Record;
 import com.customer.statementvalidator.resources.Records;
 
 /**
- * @author GA1357
+ * This class is utility class to handle all validations for the 
+ * uploaded file
  *
  */
 @Component
@@ -55,7 +56,10 @@ public class FileValidatorUtility {
     List<Record> duplicateReference = new ArrayList<>();
     if(null != records) {
       Set<Integer> uniqueReference = new HashSet<>();
-      duplicateReference = records.getRecord().stream().filter(record -> !uniqueReference.add(record.getReference())).collect(Collectors.toList());
+      duplicateReference = records.getRecord()
+          .parallelStream()
+          .filter(record -> !uniqueReference.add(record.getReference()))
+          .collect(Collectors.toList());
     }
     return duplicateReference;
   }

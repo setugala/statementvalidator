@@ -28,7 +28,7 @@ public class ValidatorApplicationExceptionHandler extends ResponseEntityExceptio
   /**
    * Method handles any unknown exception caught
    * 
-   * @param exc - Exception thrown
+   * @param exception- Exception thrown
    * @return -json error response
    */
   @ExceptionHandler(Exception.class)

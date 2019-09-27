@@ -12,10 +12,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.Data;
 
-/**
- * @author GA1357
- *
- */
 @Data
 @XmlRootElement(name="records")
 @XmlAccessorType(XmlAccessType.FIELD)

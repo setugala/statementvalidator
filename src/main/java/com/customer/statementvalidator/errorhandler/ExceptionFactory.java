@@ -7,11 +7,14 @@ import org.apache.commons.logging.Log;
 
 import com.customer.statementvalidator.resources.Message;
 
-/**
- * @author GA1357
- *
- */
 public class ExceptionFactory {
+
+  /**
+   * 
+   */
+  private ExceptionFactory() {
+    super();
+  }
 
   /**
    * Method used to log and throw the exception
@@ -24,9 +27,9 @@ public class ExceptionFactory {
    * @throws PaymentInitiationApplicationException - exception thrown
    */
   public static void logAndThrowApplicationException(final Log logger, String log, Exception exception,
-      String errorKey, String errorMessage) throws CustomerValidatorApplicationException {
+      String errorKey, String errorMessage) throws ValidatorApplicationException {
     logger.error(log, exception);
-    throw new CustomerValidatorApplicationException(getMessage(errorKey, errorMessage));
+    throw new ValidatorApplicationException(getMessage(errorKey, errorMessage));
   }
 
   public static Message getMessage(String errorKey, String errorMessage) {

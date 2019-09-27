@@ -5,11 +5,7 @@ package com.customer.statementvalidator.errorhandler;
 
 import com.customer.statementvalidator.resources.Message;
 
-/**
- * @author GA1357
- *
- */
-public class CustomerValidatorApplicationException extends Exception{
+public class ValidatorApplicationException extends Exception{
 
 
   private Message messages;
@@ -34,11 +30,11 @@ public class CustomerValidatorApplicationException extends Exception{
    */
   private static final long serialVersionUID = 5620484314206730435L;
 
-  public CustomerValidatorApplicationException(String message) {
+  public ValidatorApplicationException(String message) {
     super(message);
   }
   
-  public CustomerValidatorApplicationException(Message messages) {
+  public ValidatorApplicationException(Message messages) {
     super();
     this.messages=messages;
   }

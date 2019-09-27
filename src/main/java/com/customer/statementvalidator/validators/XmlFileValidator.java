@@ -19,7 +19,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.customer.statementvalidator.errorhandler.CustomerValidatorApplicationException;
+import com.customer.statementvalidator.errorhandler.ValidatorApplicationException;
 import com.customer.statementvalidator.errorhandler.ExceptionFactory;
 import com.customer.statementvalidator.resources.Records;
 
@@ -42,20 +42,19 @@ public class XmlFileValidator {
    *                in xml format
    * @return Records
    *            - the records present in the xml file
-   * @throws CustomerValidatorApplicationException
+   * @throws ValidatorApplicationException
    *            - Application exception in case of IO Exception
    */
 
-  public Records getRecordsFromXml(MultipartFile uploadedFile) throws CustomerValidatorApplicationException {
+  public Records getRecordsFromXml(MultipartFile uploadedFile) throws ValidatorApplicationException {
 
     Records records = null;
     try(InputStream is = uploadedFile.getInputStream();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));){
-      String xmlString = br.lines().collect(Collectors.joining("\n"));
 
       JAXBContext jaxbContext = JAXBContext.newInstance(Records.class);             
       Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-      records = (Records) jaxbUnmarshaller.unmarshal(new StringReader(xmlString));
+      records = (Records) jaxbUnmarshaller.unmarshal(br);
 
     }catch (JAXBException | IOException exception){
       ExceptionFactory.logAndThrowApplicationException(LOGGER, "Exception while reading Xml file", 
