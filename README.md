@@ -14,9 +14,9 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * JDK 1.8 or higher
-* [git bash](https://git-scm.com/downloads)
-* [maven](https://maven.apache.org/download.cgi)
-* [curl](https://curl.haxx.se/dlwiz/?type=bin)
+* [Git Bash](https://git-scm.com/downloads)
+* [Maven](https://maven.apache.org/download.cgi)
+* [Curl](https://curl.haxx.se/dlwiz/?type=bin)
 
 ### Installing
 
@@ -40,7 +40,7 @@ cd statementvalidator
 mvn spring-boot:run
 ```
 
-#### 4b) Start the application on local using docker
+##### 4b) Start the application on local using docker
 ```
 docker image build -t customer/statementvalidator .
 docker run -it customer/statementvalidator -p 9080:9080
